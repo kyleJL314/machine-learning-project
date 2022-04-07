@@ -38,6 +38,13 @@ def make_discriminator_model():
     model.add(layers.Dense(1))
 
     return model
+cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=True)
+def discriminator_loss(real_output, fake_output):
+    real_loss = cross_entropy(tf.ones_like(real_output), real_output)
+    fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
+    total_loss = real_loss + fake_loss
+    return total_loss
+
 images = os.listdir(inputFolder)
 images.pop(0)
 inputs = []
@@ -45,9 +52,6 @@ f=0
 for i in images:
     image = Image.open(inputFolder+'/'+i)
     inputs.append(convertImageToNpArray(image))
-    if(f>0):
-        break;
-    f+=1
 
 inputs = np.array(inputs)  
 print(inputs.shape)
