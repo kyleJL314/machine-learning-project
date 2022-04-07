@@ -14,7 +14,7 @@ def createRandomSamples(image,saveName,saveDirectory,amount,width,height):
     saveName = os.path.splitext(saveName)
     for i in range(amount):
         
-        im_crop = randomCrop(image,image.size[0],image.size[1])
+        im_crop = randomCrop(image,width,height)
         savePath = saveDirectory+"/"+saveName[0]+"-"+str(i)+saveName[1]
         im_crop.save(savePath, quality=95)
 
@@ -33,5 +33,5 @@ images = os.listdir(sys.argv[1])
 images.pop(0)
 for i in images:
     image = Image.open(sys.argv[1]+'/'+i)
-    createRandomSamples(image,i,sys.argv[2],10,200,200)
+    createRandomSamples(image,i,sys.argv[2],10,300,300)
     
