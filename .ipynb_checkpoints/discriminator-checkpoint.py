@@ -16,7 +16,7 @@ from IPython import display
 print(tf.__version__)
 
 inputFolder = 'w'
-imageShape = [300, 300, 1]
+imageShape = [100, 100, 1]
 
 def convertImageToNpArray(image):
     image_grey =ImageOps.grayscale(image)

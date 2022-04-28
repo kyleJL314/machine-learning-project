@@ -16,7 +16,9 @@ def createRandomSamples(image,saveName,saveDirectory,amount,width,height):
         
         im_crop = randomCrop(image,width,height)
         savePath = saveDirectory+"/"+saveName[0]+"-"+str(i)+saveName[1]
-        im_crop.save(savePath, quality=95)
+        final_scale = (100, 100)
+        im_crop = im_crop.resize(final_scale)
+        im_crop.save(savePath, quality=100)
 
 
 if(len(sys.argv)<3):
@@ -33,5 +35,5 @@ images = os.listdir(sys.argv[1])
 images.pop(0)
 for i in images:
     image = Image.open(sys.argv[1]+'/'+i)
-    createRandomSamples(image,i,sys.argv[2],200,300,300)
+    createRandomSamples(image,i,sys.argv[2],10,300,300)
     
