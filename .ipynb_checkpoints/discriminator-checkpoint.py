@@ -17,6 +17,7 @@ print(tf.__version__)
 
 inputFolder = 'w'
 imageShape = [300, 300, 1]
+
 def convertImageToNpArray(image):
     image_grey =ImageOps.grayscale(image)
     generated_image = np.array(image_grey)
