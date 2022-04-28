@@ -33,5 +33,5 @@ images = os.listdir(sys.argv[1])
 images.pop(0)
 for i in images:
     image = Image.open(sys.argv[1]+'/'+i)
-    createRandomSamples(image,i,sys.argv[2],200,300,300)
+    createRandomSamples(image,i,sys.argv[2],10,100,100)
     
